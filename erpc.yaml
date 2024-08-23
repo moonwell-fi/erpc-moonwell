@@ -7,11 +7,11 @@ database:
       connectionUri: ${DATABASE_PUBLIC_URL}
       table: rpc_cache
 server:
-  httpHost: 0.0.0.0
+  httpHost: '[::]'
   httpPort: 4000
 metrics:
   enabled: true
-  host: 0.0.0.0
+  host: '[::]'
   port: 4001
 projects:
   - id: main
