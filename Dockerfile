@@ -6,4 +6,4 @@ COPY erpc.yaml .
 # 4001 -> Monitoring
 EXPOSE 4000 4001
 
-CMD ./erpc-server; fi
+CMD ./erpc-server
