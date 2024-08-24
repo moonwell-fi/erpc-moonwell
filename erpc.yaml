@@ -262,4 +262,4 @@ rateLimiters:
       rules:
         - method: '*'
           maxCount: 500000
-          period: 1d
+          period: 86400s
