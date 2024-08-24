@@ -127,6 +127,25 @@ projects:
             backoffMaxDelay: 10s
             backoffFactor: 0.3
             jitter: 500ms
+      - id: blastapi-chain-84532
+        type: evm
+        endpoint: ${BASE_SEPOLIA_RPC_URL}
+        jsonRpc:
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
+        rateLimitBudget: global-blast
+        evm:
+          chainId: 84532
+        failsafe:
+          timeout:
+            duration: 15s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
       - id: blastapi-chain-10
         type: evm
         endpoint: ${OP_RPC_URL}
@@ -137,6 +156,25 @@ projects:
         rateLimitBudget: global-blast
         evm:
           chainId: 10
+        failsafe:
+          timeout:
+            duration: 15s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: blastapi-chain-11155420
+        type: evm
+        endpoint: ${OP_SEPOLIA_RPC_URL}
+        jsonRpc:
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
+        rateLimitBudget: global-blast
+        evm:
+          chainId: 11155420
         failsafe:
           timeout:
             duration: 15s
@@ -184,6 +222,25 @@ projects:
             backoffMaxDelay: 10s
             backoffFactor: 0.3
             jitter: 500ms
+      - id: blastapi-chain-1287
+        type: evm
+        endpoint: ${MOONBASE_RPC_URL}
+        jsonRpc:
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
+        rateLimitBudget: global-blast
+        evm:
+          chainId: 1287
+        failsafe:
+          timeout:
+            duration: 15s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
 rateLimiters:
   budgets:
     - id: default-budget
@@ -204,5 +261,5 @@ rateLimiters:
     - id: global-alchemy
       rules:
         - method: '*'
-          maxCount: 40
-          period: 1s
+          maxCount: 500000
+          period: 86400s
