@@ -21,7 +21,7 @@ projects:
           chainId: 1
         failsafe:
           timeout:
-            duration: 30s
+            duration: 60s
           retry:
             maxCount: 3
             delay: 500ms
@@ -36,7 +36,7 @@ projects:
           chainId: 43114
         failsafe:
           timeout:
-            duration: 30s
+            duration: 60s
           retry:
             maxCount: 3
             delay: 500ms
@@ -51,7 +51,7 @@ projects:
           chainId: 42161
         failsafe:
           timeout:
-            duration: 30s
+            duration: 60s
           retry:
             maxCount: 3
             delay: 500ms
@@ -66,7 +66,7 @@ projects:
           chainId: 137
         failsafe:
           timeout:
-            duration: 30s
+            duration: 60s
           retry:
             maxCount: 3
             delay: 500ms
@@ -81,7 +81,7 @@ projects:
           chainId: 8453
         failsafe:
           timeout:
-            duration: 30s
+            duration: 60s
           retry:
             maxCount: 3
             delay: 500ms
@@ -96,7 +96,7 @@ projects:
           chainId: 10
         failsafe:
           timeout:
-            duration: 30s
+            duration: 60s
           retry:
             maxCount: 3
             delay: 500ms
@@ -111,7 +111,7 @@ projects:
           chainId: 1284
         failsafe:
           timeout:
-            duration: 30s
+            duration: 60s
           retry:
             maxCount: 3
             delay: 500ms
@@ -126,7 +126,7 @@ projects:
           chainId: 1285
         failsafe:
           timeout:
-            duration: 30s
+            duration: 60s
           retry:
             maxCount: 3
             delay: 500ms
@@ -142,7 +142,7 @@ projects:
         rateLimitBudget: global-alchemy
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -161,7 +161,7 @@ projects:
           chainId: 8453
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -180,7 +180,7 @@ projects:
           chainId: 8453
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -199,7 +199,7 @@ projects:
           chainId: 84532
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -218,7 +218,7 @@ projects:
           chainId: 10
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -237,7 +237,7 @@ projects:
           chainId: 11155420
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -256,7 +256,7 @@ projects:
           chainId: 1284
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -275,7 +275,7 @@ projects:
           chainId: 1285
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -294,7 +294,7 @@ projects:
           chainId: 1287
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -313,7 +313,7 @@ projects:
           chainId: 1
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -332,7 +332,7 @@ projects:
           chainId: 43114
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -351,7 +351,7 @@ projects:
           chainId: 137
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -370,7 +370,7 @@ projects:
           chainId: 42161
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -389,7 +389,7 @@ projects:
           chainId: 1
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -408,7 +408,7 @@ projects:
           chainId: 43114
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -427,7 +427,7 @@ projects:
           chainId: 137
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -446,7 +446,7 @@ projects:
           chainId: 42161
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -465,7 +465,7 @@ projects:
           chainId: 10
         failsafe:
           timeout:
-            duration: 10s
+            duration: 15s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -492,7 +492,7 @@ rateLimiters:
     - id: global-public
       rules:
         - method: '*'
-          maxCount: 5000
+          maxCount: 50
           period: 1s
     - id: global-alchemy
       rules:
