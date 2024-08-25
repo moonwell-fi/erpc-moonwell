@@ -1,4 +1,4 @@
-logLevel: warn
+logLevel: debug
 database:
   evmJsonRpcCache:
     # driver: memory
