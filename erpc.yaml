@@ -18,6 +18,66 @@ projects:
     networks:
       - architecture: evm
         evm:
+          chainId: 1
+        failsafe:
+          timeout:
+            duration: 30s
+          retry:
+            maxCount: 3
+            delay: 500ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 200ms
+          hedge:
+            delay: 1000ms
+            maxCount: 2
+      - architecture: evm
+        evm:
+          chainId: 43114
+        failsafe:
+          timeout:
+            duration: 30s
+          retry:
+            maxCount: 3
+            delay: 500ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 200ms
+          hedge:
+            delay: 1000ms
+            maxCount: 2
+      - architecture: evm
+        evm:
+          chainId: 42161
+        failsafe:
+          timeout:
+            duration: 30s
+          retry:
+            maxCount: 3
+            delay: 500ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 200ms
+          hedge:
+            delay: 1000ms
+            maxCount: 2
+      - architecture: evm
+        evm:
+          chainId: 137
+        failsafe:
+          timeout:
+            duration: 30s
+          retry:
+            maxCount: 3
+            delay: 500ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 200ms
+          hedge:
+            delay: 1000ms
+            maxCount: 2
+      - architecture: evm
+        evm:
           chainId: 8453
         failsafe:
           timeout:
@@ -82,7 +142,7 @@ projects:
         rateLimitBudget: global-alchemy
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -92,16 +152,16 @@ projects:
       - id: cdp-chain-8453
         type: evm
         endpoint: ${CDP_BASE_RPC_URL}
-        jsonRpc:
-          supportsBatch: true
-          batchMaxWait: 100ms
-          batchMaxSize: 100
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
         rateLimitBudget: global-cdp
         evm:
           chainId: 8453
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -110,17 +170,17 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-8453
         type: evm
-        endpoint: ${BASE_RPC_URL}
-        jsonRpc:
-          supportsBatch: true
-          batchMaxWait: 100ms
-          batchMaxSize: 100
+        endpoint: https://base-mainnet.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 8453
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -129,17 +189,17 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-84532
         type: evm
-        endpoint: ${BASE_SEPOLIA_RPC_URL}
-        jsonRpc:
-          supportsBatch: true
-          batchMaxWait: 100ms
-          batchMaxSize: 100
+        endpoint: https://base-sepolia.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 84532
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -148,17 +208,17 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-10
         type: evm
-        endpoint: ${OP_RPC_URL}
-        jsonRpc:
-          supportsBatch: true
-          batchMaxWait: 100ms
-          batchMaxSize: 100
+        endpoint: https://optimism-mainnet.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 10
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -167,17 +227,17 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-11155420
         type: evm
-        endpoint: ${OP_SEPOLIA_RPC_URL}
-        jsonRpc:
-          supportsBatch: true
-          batchMaxWait: 100ms
-          batchMaxSize: 100
+        endpoint: https://optimism-sepolia.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 11155420
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -186,17 +246,17 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-1284
         type: evm
-        endpoint: ${MOONBEAM_RPC_URL}
-        jsonRpc:
-          supportsBatch: true
-          batchMaxWait: 100ms
-          batchMaxSize: 100
+        endpoint: https://moonbeam.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 1284
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -205,17 +265,17 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-1285
         type: evm
-        endpoint: ${MOONRIVER_RPC_URL}
-        jsonRpc:
-          supportsBatch: true
-          batchMaxWait: 100ms
-          batchMaxSize: 100
+        endpoint: https://moonriver.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 1285
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -224,17 +284,188 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-1287
         type: evm
-        endpoint: ${MOONBASE_RPC_URL}
-        jsonRpc:
-          supportsBatch: true
-          batchMaxWait: 100ms
-          batchMaxSize: 100
+        endpoint: https://moonbase-alpha.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 1287
         failsafe:
           timeout:
-            duration: 15s
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: blastapi-chain-1
+        type: evm
+        endpoint: https://eth-mainnet.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-blast
+        evm:
+          chainId: 1
+        failsafe:
+          timeout:
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: blastapi-chain-43114
+        type: evm
+        endpoint: https://ava-mainnet.blastapi.io/${BLASTAPI_KEY}/ext/bc/C/rpc
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-blast
+        evm:
+          chainId: 43114
+        failsafe:
+          timeout:
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: blastapi-chain-137
+        type: evm
+        endpoint: https://polygon-mainnet.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-blast
+        evm:
+          chainId: 137
+        failsafe:
+          timeout:
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: blastapi-chain-42161
+        type: evm
+        endpoint: https://arbitrum-one.blastapi.io/${BLASTAPI_KEY}
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-blast
+        evm:
+          chainId: 42161
+        failsafe:
+          timeout:
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: public-chain-1
+        type: evm
+        endpoint: https://eth-mainnet.public.blastapi.io
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-public
+        evm:
+          chainId: 1
+        failsafe:
+          timeout:
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: public-chain-43114
+        type: evm
+        endpoint: https://ava-mainnet.public.blastapi.io/ext/bc/C/rpc
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-public
+        evm:
+          chainId: 43114
+        failsafe:
+          timeout:
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: public-chain-137
+        type: evm
+        endpoint: https://polygon-mainnet.public.blastapi.io
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-public
+        evm:
+          chainId: 137
+        failsafe:
+          timeout:
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: public-chain-42161
+        type: evm
+        endpoint: https://arbitrum-one.public.blastapi.io
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-public
+        evm:
+          chainId: 42161
+        failsafe:
+          timeout:
+            duration: 10s
+          retry:
+            maxCount: 2
+            delay: 1000ms
+            backoffMaxDelay: 10s
+            backoffFactor: 0.3
+            jitter: 500ms
+      - id: public-chain-10
+        type: evm
+        endpoint: https://optimism-mainnet.public.blastapi.io
+        # jsonRpc:
+          # supportsBatch: true
+          # batchMaxWait: 100ms
+          # batchMaxSize: 100
+        rateLimitBudget: global-public
+        evm:
+          chainId: 10
+        failsafe:
+          timeout:
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -254,6 +485,11 @@ rateLimiters:
           maxCount: 5000
           period: 1s
     - id: global-blast
+      rules:
+        - method: '*'
+          maxCount: 5000
+          period: 1s
+    - id: global-public
       rules:
         - method: '*'
           maxCount: 5000
