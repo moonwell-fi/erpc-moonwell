@@ -142,7 +142,7 @@ projects:
         rateLimitBudget: global-alchemy
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -161,7 +161,7 @@ projects:
           chainId: 8453
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -170,7 +170,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-8453
         type: evm
-        endpoint: ${BASE_RPC_URL}
+        endpoint: https://base-mainnet.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -180,7 +180,7 @@ projects:
           chainId: 8453
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -189,7 +189,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-84532
         type: evm
-        endpoint: ${BASE_SEPOLIA_RPC_URL}
+        endpoint: https://base-sepolia.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -199,7 +199,7 @@ projects:
           chainId: 84532
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -208,7 +208,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-10
         type: evm
-        endpoint: ${OP_RPC_URL}
+        endpoint: https://optimism-mainnet.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -218,7 +218,7 @@ projects:
           chainId: 10
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -227,7 +227,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-11155420
         type: evm
-        endpoint: ${OP_SEPOLIA_RPC_URL}
+        endpoint: https://optimism-sepolia.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -237,7 +237,7 @@ projects:
           chainId: 11155420
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -246,7 +246,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-1284
         type: evm
-        endpoint: ${MOONBEAM_RPC_URL}
+        endpoint: https://moonbeam.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -256,7 +256,7 @@ projects:
           chainId: 1284
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -265,7 +265,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-1285
         type: evm
-        endpoint: ${MOONRIVER_RPC_URL}
+        endpoint: https://moonriver.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -275,7 +275,7 @@ projects:
           chainId: 1285
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -284,7 +284,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-1287
         type: evm
-        endpoint: ${MOONBASE_RPC_URL}
+        endpoint: https://moonbase-alpha.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -294,7 +294,7 @@ projects:
           chainId: 1287
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -303,7 +303,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-1
         type: evm
-        endpoint: ${ETHEREUM_RPC_URL}
+        endpoint: https://eth-mainnet.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -313,7 +313,7 @@ projects:
           chainId: 1
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -322,7 +322,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-43114
         type: evm
-        endpoint: ${AVALANCHE_RPC_URL}
+        endpoint: https://ava-mainnet.blastapi.io/${BLASTAPI_KEY}/ext/bc/C/rpc
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -332,7 +332,7 @@ projects:
           chainId: 43114
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -341,7 +341,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-137
         type: evm
-        endpoint: ${POLYGON_RPC_URL}
+        endpoint: https://polygon-mainnet.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -351,7 +351,7 @@ projects:
           chainId: 137
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -360,7 +360,7 @@ projects:
             jitter: 500ms
       - id: blastapi-chain-42161
         type: evm
-        endpoint: ${ARBITRUM_RPC_URL}
+        endpoint: https://arbitrum-one.blastapi.io/${BLASTAPI_KEY}
         # jsonRpc:
           # supportsBatch: true
           # batchMaxWait: 100ms
@@ -370,7 +370,7 @@ projects:
           chainId: 42161
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -389,26 +389,7 @@ projects:
           chainId: 1
         failsafe:
           timeout:
-            duration: 30s
-          retry:
-            maxCount: 2
-            delay: 1000ms
-            backoffMaxDelay: 10s
-            backoffFactor: 0.3
-            jitter: 500ms
-      - id: public-chain-8453
-        type: evm
-        endpoint: https://base.publicnode.com
-        # jsonRpc:
-          # supportsBatch: true
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
-        rateLimitBudget: global-public
-        evm:
-          chainId: 8453
-        failsafe:
-          timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -427,7 +408,7 @@ projects:
           chainId: 43114
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -446,7 +427,7 @@ projects:
           chainId: 137
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -465,7 +446,7 @@ projects:
           chainId: 42161
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
@@ -484,7 +465,7 @@ projects:
           chainId: 10
         failsafe:
           timeout:
-            duration: 30s
+            duration: 10s
           retry:
             maxCount: 2
             delay: 1000ms
