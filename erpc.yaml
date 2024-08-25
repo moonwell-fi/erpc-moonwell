@@ -139,6 +139,8 @@ projects:
     upstreams:
       - id: alchemy-global
         endpoint: ${ALCHEMY_ENDPOINT}
+        jsonRpc:
+          supportsBatch: false
         rateLimitBudget: global-alchemy
         failsafe:
           timeout:
