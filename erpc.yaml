@@ -15,6 +15,13 @@ metrics:
   port: 4001
 projects:
   - id: main
+    cors:
+      allowedOrigins:
+        - '*.moonwell-frontend-v2-react.pages.dev'
+        - 'https://*.moonwell-frontend-v2-react.pages.dev'
+        - 'https://moonwell.fi'
+        - 'moonwell.fi'
+        - 'http://localhost:3000'
     networks:
       - architecture: evm
         evm:
