@@ -19,8 +19,11 @@ projects:
   - id: main
     cors:
       allowedOrigins:
-        - 'https://*.moonwell-frontend-v2-react.pages.dev'
         - 'https://moonwell.fi'
+        - 'https://*.moonwell-frontend-v2-react.pages.dev'
+        - 'https://dev.moonwell-frontend-v2-react.pages.dev'
+        - 'https://staging.moonwell-frontend-v2-react.pages.dev'
+        - 'https://erpc.moonwell-frontend-v2-react.pages.dev'
         - 'http://localhost:3000'
       allowedHeaders:
         - '*'
