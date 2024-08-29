@@ -24,6 +24,9 @@ projects:
         - 'https://erpc.moonwell-frontend-v2-react.pages.dev'
         - 'https://moonwell.fi'
         - 'http://localhost:3000'
+      allowedHeaders:
+        - 'Content-Type'
+        - 'Authorization'
     networks:
       - architecture: evm
         evm:
