@@ -20,6 +20,8 @@ projects:
     cors:
       allowedOrigins:
         - 'https://*.moonwell-frontend-v2-react.pages.dev'
+        - 'https://dev.moonwell-frontend-v2-react.pages.dev'
+        - 'https://erpc.moonwell-frontend-v2-react.pages.dev'
         - 'https://moonwell.fi'
         - 'http://localhost:3000'
     networks:
