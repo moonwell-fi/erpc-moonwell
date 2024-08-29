@@ -25,8 +25,7 @@ projects:
         - 'https://moonwell.fi'
         - 'http://localhost:3000'
       allowedHeaders:
-        - 'Content-Type'
-        - 'Authorization'
+        - '*'
     networks:
       - architecture: evm
         evm:
