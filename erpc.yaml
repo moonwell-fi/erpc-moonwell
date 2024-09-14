@@ -1,11 +1,12 @@
-logLevel: debug
+logLevel: warn
 database:
   evmJsonRpcCache:
-    # driver: memory
-    driver: postgresql
-    postgresql:
-      connectionUri: ${DATABASE_URL}
-      table: rpc_cache
+    driver: memory
+    maxItems: 10000000
+    # driver: postgresql
+    # postgresql:
+    #  connectionUri: ${DATABASE_URL}
+    #  table: rpc_cache
 server:
   httpHostV4: "0.0.0.0"
   httpHostV6: "[::]"
@@ -21,9 +22,6 @@ projects:
       allowedOrigins:
         - 'https://moonwell.fi'
         - 'https://*.moonwell-frontend-v2-react.pages.dev'
-        - 'https://dev.moonwell-frontend-v2-react.pages.dev'
-        - 'https://staging.moonwell-frontend-v2-react.pages.dev'
-        - 'https://erpc.moonwell-frontend-v2-react.pages.dev'
         - 'http://localhost:3000'
       allowedHeaders:
         - 'Content-Type'
@@ -150,27 +148,27 @@ projects:
             delay: 1000ms
             maxCount: 2
     upstreams:
-      - id: alchemy-global
-        endpoint: ${ALCHEMY_ENDPOINT}
-        jsonRpc:
-          supportsBatch: false
-        rateLimitBudget: global-alchemy
-        failsafe:
-          timeout:
-            duration: 15s
-          retry:
-            maxCount: 2
-            delay: 1000ms
-            backoffMaxDelay: 10s
-            backoffFactor: 0.3
-            jitter: 500ms
+      #- id: alchemy-global
+      #  endpoint: ${ALCHEMY_ENDPOINT}
+      #  jsonRpc:
+      #    supportsBatch: false
+      #  rateLimitBudget: global-alchemy
+      #  failsafe:
+      #    timeout:
+      #      duration: 15s
+      #    retry:
+      #      maxCount: 2
+      #      delay: 1000ms
+      #      backoffMaxDelay: 10s
+      #      backoffFactor: 0.3
+      #      jitter: 500ms
       - id: cdp-chain-8453
         type: evm
         endpoint: ${CDP_BASE_RPC_URL}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-cdp
         evm:
           chainId: 8453
@@ -187,9 +185,9 @@ projects:
         type: evm
         endpoint: https://base-mainnet.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 8453
@@ -206,9 +204,9 @@ projects:
         type: evm
         endpoint: https://base-sepolia.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 84532
@@ -225,9 +223,9 @@ projects:
         type: evm
         endpoint: https://optimism-mainnet.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 10
@@ -244,9 +242,9 @@ projects:
         type: evm
         endpoint: https://optimism-sepolia.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 11155420
@@ -263,9 +261,9 @@ projects:
         type: evm
         endpoint: https://moonbeam.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 1284
@@ -282,9 +280,9 @@ projects:
         type: evm
         endpoint: https://moonriver.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 1285
@@ -301,9 +299,9 @@ projects:
         type: evm
         endpoint: https://moonbase-alpha.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 1287
@@ -320,9 +318,9 @@ projects:
         type: evm
         endpoint: https://eth-mainnet.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 1
@@ -339,9 +337,9 @@ projects:
         type: evm
         endpoint: https://ava-mainnet.blastapi.io/${BLASTAPI_KEY}/ext/bc/C/rpc
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 43114
@@ -358,9 +356,9 @@ projects:
         type: evm
         endpoint: https://polygon-mainnet.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 137
@@ -377,9 +375,9 @@ projects:
         type: evm
         endpoint: https://arbitrum-one.blastapi.io/${BLASTAPI_KEY}
         jsonRpc:
-          supportsBatch: false
-          # batchMaxWait: 100ms
-          # batchMaxSize: 100
+          supportsBatch: true
+          batchMaxWait: 100ms
+          batchMaxSize: 100
         rateLimitBudget: global-blast
         evm:
           chainId: 42161
@@ -409,8 +407,8 @@ rateLimiters:
         - method: '*'
           maxCount: 5000
           period: 1s
-    - id: global-alchemy
-      rules:
-        - method: '*'
-          maxCount: 500000
-          period: 86400s
+    #- id: global-alchemy
+    #  rules:
+    #    - method: '*'
+    #      maxCount: 500000
+    #      period: 86400s
