@@ -2,7 +2,7 @@ logLevel: warn
 database:
   evmJsonRpcCache:
     driver: memory
-    maxItems: 10000000
+    maxItems: 1000000000
     # driver: postgresql
     # postgresql:
     #  connectionUri: ${DATABASE_URL}
