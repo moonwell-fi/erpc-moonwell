@@ -31,6 +31,7 @@ projects:
         evm:
           chainId: 1
         failsafe:
+          circuitBreaker: ~
           timeout:
             duration: 60s
           retry:
@@ -46,6 +47,7 @@ projects:
         evm:
           chainId: 43114
         failsafe:
+          circuitBreaker: ~
           timeout:
             duration: 60s
           retry:
@@ -61,6 +63,7 @@ projects:
         evm:
           chainId: 42161
         failsafe:
+          circuitBreaker: ~
           timeout:
             duration: 60s
           retry:
@@ -76,6 +79,7 @@ projects:
         evm:
           chainId: 137
         failsafe:
+          circuitBreaker: ~
           timeout:
             duration: 60s
           retry:
@@ -106,6 +110,7 @@ projects:
         evm:
           chainId: 10
         failsafe:
+          circuitBreaker: ~
           timeout:
             duration: 60s
           retry:
@@ -121,6 +126,7 @@ projects:
         evm:
           chainId: 1284
         failsafe:
+          circuitBreaker: ~
           timeout:
             duration: 60s
           retry:
@@ -136,6 +142,7 @@ projects:
         evm:
           chainId: 1285
         failsafe:
+          circuitBreaker: ~
           timeout:
             duration: 60s
           retry:
