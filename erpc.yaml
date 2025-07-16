@@ -40,34 +40,58 @@ projects:
         - 'OPTIONS'
 
     networkDefaults:
+      directiveDefaults:
+        retryPending: false
+        retryEmpty: true
       failsafe:
-        circuitBreaker: ~
         timeout:
-          duration: 60s
-        retry:
-          maxAttempts: 3
-          delay: 500ms
-          backoffMaxDelay: 10s
-          backoffFactor: 0.3
-          jitter: 200ms
+          duration: 300s
         hedge:
-          delay: 1000ms
-          maxCount: 2
+          quantile: 0.95
+          maxCount: 3
+          minDelay: 100ms
+          maxDelay: 5s
+        retry:
+          maxAttempts: 6 # Must be high-enough to retry on empty responses
+          delay: 0ms
+          emptyResultConfidence: blockHead
+          emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
+      evm:
+        integrity:
+          enforceHighestBlock: true
+          enforceGetLogsBlockRange: true
 
     upstreamDefaults:
-      jsonRpc:
-        supportsBatch: true
-        batchMaxWait: 100ms
-        batchMaxSize: 100
+      autoIgnoreUnsupportedMethods: false
+      evm:
+        statePollerDebounce: 1s
+        getLogsAutoSplittingRangeThreshold: 5000
+        getLogsMaxAllowedRange: 20000
+        getLogsSplitOnError: false
       failsafe:
         timeout:
-          duration: 15s
-        retry:
-          maxAttempts: 2
-          delay: 1000ms
-          backoffMaxDelay: 10s
-          backoffFactor: 0.3
-          jitter: 500ms
+          duration: 300s
+        hedge: null
+        retry: null
+      rateLimitAutoTune:
+        enabled: true
+        adjustmentPeriod: 30s
+        errorRateThreshold: 0.1
+        increaseFactor: 1.1
+        decreaseFactor: 0.7
+        minBudget: 1
+        maxBudget: 100000
+      routing:
+        scoreMultipliers:
+          - respLatency: 20
+            errorRate: 2
+            blockHeadLag: 8
+
+    providers:
+      - vendor: erpc
+        settings:
+          endpoint: c1863.us-west-2.aws.erpc.cloud/objective/evm
+          secret: ${ERPC_SECRET}
 
     upstreams:
       - id: cdp-chain-8453
