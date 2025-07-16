@@ -107,7 +107,7 @@ projects:
 
       - id: cdp-chain-8453
         type: evm
-        endpoint: https://${CDP_BASE_RPC_URL}
+        endpoint: ${CDP_BASE_RPC_URL}
         rateLimitBudget: global-cdp
         evm:
           chainId: 8453
