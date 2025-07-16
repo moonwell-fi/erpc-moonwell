@@ -98,6 +98,42 @@ projects:
           secret: ${ERPC_SECRET}
 
     upstreams:
+      - id: egc-arbitrum-one
+        vendorName: erpc-edge-cache
+        endpoint: grpc://egc-arbitrum-one.pubgcs.us-west-2.aws.erpc.cloud:443?secret=${ERPC_SECRET}
+        evm:
+          chainId: 42161
+          statePollerDebounce: 500ms
+          statePollerInterval: 2s
+          maxAvailableRecentBlocks: 10000
+        ignoreMethods:
+          - "*"
+        allowMethods:
+          - eth_getLogs
+          - eth_getBlockByHash
+          - eth_getBlockReceipts
+          - eth_getBlockByNumber
+          - eth_getTransactionByHash
+          - eth_getTransactionReceipt
+
+      - id: egc-base
+        vendorName: erpc-edge-cache
+        endpoint: grpc://egc-base.pubgcs.us-west-2.aws.erpc.cloud:443?secret=${ERPC_SECRET}
+        evm:
+          chainId: 8453
+          statePollerDebounce: 500ms
+          statePollerInterval: 2s
+          maxAvailableRecentBlocks: 2000
+        ignoreMethods:
+          - "*"
+        allowMethods:
+          - eth_getLogs
+          - eth_getBlockByHash
+          - eth_getBlockReceipts
+          - eth_getBlockByNumber
+          - eth_getTransactionByHash
+          - eth_getTransactionReceipt
+
       - id: alchemy-chain-8453
         type: evm
         endpoint: https://base-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}

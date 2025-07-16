@@ -1,4 +1,4 @@
-FROM ghcr.io/erpc/erpc:0.0.53
+FROM ghcr.io/erpc/erpc:7075d5c
 
 COPY erpc.yaml .
 
