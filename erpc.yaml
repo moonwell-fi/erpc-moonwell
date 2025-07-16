@@ -94,7 +94,7 @@ projects:
     providers:
       - vendor: erpc
         settings:
-          endpoint: c1863.us-west-2.aws.erpc.cloud/objective/evm
+          endpoint: c1863.us-west-2.aws.erpc.cloud/moonwell/evm
           secret: ${ERPC_SECRET}
 
     upstreams:
@@ -147,19 +147,19 @@ projects:
         evm:
           chainId: 1284
 
-      - id: blastapi-chain-1285
-        type: evm
-        endpoint: https://moonriver.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
-        evm:
-          chainId: 1285
+      # - id: blastapi-chain-1285
+      #   type: evm
+      #   endpoint: https://moonriver.blastapi.io/${BLASTAPI_KEY}
+      #   rateLimitBudget: global-blast
+      #   evm:
+      #     chainId: 1285
 
-      - id: blastapi-chain-1287
-        type: evm
-        endpoint: https://moonbase-alpha.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
-        evm:
-          chainId: 1287
+      # - id: blastapi-chain-1287
+      #   type: evm
+      #   endpoint: https://moonbase-alpha.blastapi.io/${BLASTAPI_KEY}
+      #   rateLimitBudget: global-blast
+      #   evm:
+      #     chainId: 1287
 
       - id: blastapi-chain-1
         type: evm
