@@ -46,8 +46,16 @@ projects:
       failsafe:
         timeout:
           duration: 300s
-        hedge: null
-        retry: null
+        hedge:
+          quantile: 0.95
+          maxCount: 3
+          minDelay: 100ms
+          maxDelay: 5s
+        retry:
+          maxAttempts: 6
+          delay: 0ms
+          emptyResultConfidence: blockHead
+          emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
       evm:
         integrity:
           enforceHighestBlock: true
@@ -63,13 +71,9 @@ projects:
       failsafe:
         timeout:
           duration: 300s
-        hedge:
-          quantile: 0.99
-          maxCount: 1
-          minDelay: 100ms
-          maxDelay: 5s
+        hedge: null
         retry:
-          maxAttempts: 3
+          maxAttempts: 2
           delay: 0ms
           emptyResultConfidence: blockHead
           emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
