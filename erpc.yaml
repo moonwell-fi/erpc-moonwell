@@ -47,11 +47,7 @@ projects:
         timeout:
           duration: 300s
         hedge: null
-        retry:
-          maxAttempts: 6 # Must be high-enough to retry on empty responses
-          delay: 0ms
-          emptyResultConfidence: blockHead
-          emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
+        retry: null
       evm:
         integrity:
           enforceHighestBlock: true
@@ -72,7 +68,11 @@ projects:
           maxCount: 1
           minDelay: 100ms
           maxDelay: 5s
-        retry: null
+        retry:
+          maxAttempts: 3
+          delay: 0ms
+          emptyResultConfidence: blockHead
+          emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
       rateLimitAutoTune:
         enabled: true
         adjustmentPeriod: 30s
