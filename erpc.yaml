@@ -31,7 +31,7 @@ projects:
         - 'https://moonwell.fi'
         - 'https://*.moonwell-frontend-v2-react.pages.dev'
         - 'http://localhost:3000'
-        - 'https://mamo-v2.moonwell.workers.dev'
+        - 'https://*.moonwell.workers.dev'
         - 'https://mamo.bot'
       allowedHeaders:
         - 'Content-Type'
