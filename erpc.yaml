@@ -97,7 +97,7 @@ projects:
       - vendor: erpc
         settings:
           endpoint: edge.goldsky.com/standard/evm
-          secret: {API_KEY}
+          secret: {ERPC_SECRET}
 
     upstreams:
       - id: egc-arbitrum-one
