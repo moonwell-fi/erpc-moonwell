@@ -96,8 +96,8 @@ projects:
     providers:
       - vendor: erpc
         settings:
-          endpoint: c1863.us-west-2.aws.erpc.cloud/moonwell/evm
-          secret: ${ERPC_SECRET}
+          endpoint: edge.goldsky.com/standard/evm
+          secret: {API_KEY}
 
     upstreams:
       - id: egc-arbitrum-one
