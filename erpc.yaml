@@ -96,7 +96,7 @@ projects:
     providers:
       - vendor: erpc
         settings:
-          endpoint: edge.goldsky.com/standard/evm
+          endpoint: c1863.us-west-2.aws.erpc.cloud/moonwell/evm
           secret: {ERPC_SECRET}
 
     upstreams:
