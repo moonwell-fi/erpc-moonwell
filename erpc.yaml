@@ -96,7 +96,7 @@ projects:
     providers:
       - vendor: erpc
         settings:
-          endpoint: c9856.pubgw0.us-west-2.aws.erpc.cloud/main/evm
+          endpoint: c1863.pubgw0.us-west-2.aws.erpc.cloud/moonwell/evm
           secret: {ERPC_SECRET}
 
     upstreams:
