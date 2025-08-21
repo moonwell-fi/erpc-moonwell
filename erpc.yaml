@@ -93,13 +93,19 @@ projects:
             errorRate: 2
             blockHeadLag: 8
 
-    providers:
-      - vendor: erpc
-        settings:
-          endpoint: c9856.pubgw0.us-west-2.aws.erpc.cloud/main/evm
-          secret: {ERPC_SECRET}
+    # providers:
+    #   - vendor: erpc
+    #     settings:
+    #       endpoint: c9856.pubgw0.us-west-2.aws.erpc.cloud/main/evm
+    #       secret: {ERPC_SECRET}
 
     upstreams:
+      - id: erpc-edge
+        endpoint: https://edge.goldsky.com/standard/evm/8453?token=cBySYt08ksXfNfloSpzRaohWM7aRiThR
+
+      - id: erpc-west
+        endpoint: https://c1863.pubgw0.us-west-2.aws.erpc.cloud/moonwell/evm/8453?token=2d8f9a5b-6c3e-4f7a-9b2d-8e1f4a7c5b9e
+
       - id: egc-arbitrum-one
         vendorName: erpc-edge-cache
         endpoint: grpc://egc-arbitrum-one.pubgcs.us-west-2.aws.erpc.cloud:443?secret=${ERPC_SECRET}
