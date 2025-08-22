@@ -6,7 +6,9 @@ database:
       - id: memory-cache
         driver: memory
         memory:
-          maxItems: 1000000000
+          maxItems: 10000000
+          maxTotalSize: "6GB"
+          emitMetrics: true
     policies:
       - network: "*"
         method: "*"
