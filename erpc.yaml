@@ -6,7 +6,9 @@ database:
       - id: memory-cache
         driver: memory
         memory:
-          maxItems: 1000000000
+          maxItems: 10000000
+          maxTotalSize: "6GB"
+          emitMetrics: true
     policies:
       - network: "*"
         method: "*"
@@ -31,6 +33,8 @@ projects:
         - 'https://moonwell.fi'
         - 'https://*.moonwell-frontend-v2-react.pages.dev'
         - 'http://localhost:3000'
+        - 'https://*.moonwell.workers.dev'
+        - 'https://mamo.bot'
       allowedHeaders:
         - 'Content-Type'
         - 'Authorization'
@@ -40,39 +44,77 @@ projects:
         - 'OPTIONS'
 
     networkDefaults:
+      directiveDefaults:
+        retryPending: false
+        retryEmpty: true
       failsafe:
-        circuitBreaker: ~
         timeout:
-          duration: 60s
-        retry:
-          maxAttempts: 3
-          delay: 500ms
-          backoffMaxDelay: 10s
-          backoffFactor: 0.3
-          jitter: 200ms
+          duration: 300s
         hedge:
-          delay: 1000ms
-          maxCount: 2
+          quantile: 0.95
+          maxCount: 3
+          minDelay: 100ms
+          maxDelay: 5s
+        retry:
+          maxAttempts: 6
+          delay: 0ms
+          emptyResultConfidence: blockHead
+          emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
+      evm:
+        integrity:
+          enforceHighestBlock: true
+          enforceGetLogsBlockRange: true
 
     upstreamDefaults:
-      jsonRpc:
-        supportsBatch: true
-        batchMaxWait: 100ms
-        batchMaxSize: 100
+      autoIgnoreUnsupportedMethods: false
+      evm:
+        statePollerDebounce: 1s
+        getLogsAutoSplittingRangeThreshold: 5000
+        getLogsMaxAllowedRange: 20000
+        getLogsSplitOnError: false
       failsafe:
         timeout:
-          duration: 15s
+          duration: 300s
+        hedge: null
         retry:
           maxAttempts: 2
-          delay: 1000ms
-          backoffMaxDelay: 10s
-          backoffFactor: 0.3
-          jitter: 500ms
+          delay: 0ms
+          emptyResultConfidence: blockHead
+          emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
+      rateLimitAutoTune:
+        enabled: true
+        adjustmentPeriod: 30s
+        errorRateThreshold: 0.1
+        increaseFactor: 1.1
+        decreaseFactor: 0.7
+        minBudget: 1
+        maxBudget: 100000
+      routing:
+        scoreMultipliers:
+          - respLatency: 20
+            errorRate: 2
+            blockHeadLag: 8
+
+    # providers:
+    #   - vendor: erpc
+    #     settings:
+    #       endpoint: c9856.pubgw0.us-west-2.aws.erpc.cloud/main/evm
+    #       secret: {ERPC_SECRET}
 
     upstreams:
+      - id: erpc-edge
+        endpoint: https://edge.goldsky.com/standard/evm/8453?token=${ERPC_SECRET}
+
+      - id: alchemy-chain-8453
+        type: evm
+        endpoint: https://base-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
+        rateLimitBudget: global-alchemy
+        evm:
+          chainId: 8453
+
       - id: cdp-chain-8453
         type: evm
-        endpoint: https://${CDP_BASE_RPC_URL}
+        endpoint: ${CDP_BASE_RPC_URL}
         rateLimitBudget: global-cdp
         evm:
           chainId: 8453
@@ -112,19 +154,19 @@ projects:
         evm:
           chainId: 1284
 
-      - id: blastapi-chain-1285
-        type: evm
-        endpoint: https://moonriver.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
-        evm:
-          chainId: 1285
+      # - id: blastapi-chain-1285
+      #   type: evm
+      #   endpoint: https://moonriver.blastapi.io/${BLASTAPI_KEY}
+      #   rateLimitBudget: global-blast
+      #   evm:
+      #     chainId: 1285
 
-      - id: blastapi-chain-1287
-        type: evm
-        endpoint: https://moonbase-alpha.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
-        evm:
-          chainId: 1287
+      # - id: blastapi-chain-1287
+      #   type: evm
+      #   endpoint: https://moonbase-alpha.blastapi.io/${BLASTAPI_KEY}
+      #   rateLimitBudget: global-blast
+      #   evm:
+      #     chainId: 1287
 
       - id: blastapi-chain-1
         type: evm
@@ -167,6 +209,11 @@ rateLimiters:
           maxCount: 5000
           period: 1s
     - id: global-blast
+      rules:
+        - method: '*'
+          maxCount: 5000
+          period: 1s
+    - id: global-alchemy
       rules:
         - method: '*'
           maxCount: 5000

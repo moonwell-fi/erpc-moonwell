@@ -1,4 +1,4 @@
-FROM ghcr.io/erpc/erpc:0.0.44
+FROM ghcr.io/erpc/erpc:7075d5c
 
 COPY erpc.yaml .
 
@@ -6,4 +6,4 @@ COPY erpc.yaml .
 # 4001 -> Monitoring
 EXPOSE 4000 4001
 
-CMD ./erpc-server
+CMD ["/erpc-server"]
