@@ -103,46 +103,7 @@ projects:
 
     upstreams:
       - id: erpc-edge
-        endpoint: https://edge.goldsky.com/standard/evm/8453?token=cBySYt08ksXfNfloSpzRaohWM7aRiThR
-
-      - id: erpc-west
-        endpoint: https://c1863.pubgw0.us-west-2.aws.erpc.cloud/moonwell/evm/8453?token=2d8f9a5b-6c3e-4f7a-9b2d-8e1f4a7c5b9e
-
-      - id: egc-arbitrum-one
-        vendorName: erpc-edge-cache
-        endpoint: grpc://egc-arbitrum-one.pubgcs.us-west-2.aws.erpc.cloud:443?secret=${ERPC_SECRET}
-        evm:
-          chainId: 42161
-          statePollerDebounce: 500ms
-          statePollerInterval: 2s
-          maxAvailableRecentBlocks: 10000
-        ignoreMethods:
-          - "*"
-        allowMethods:
-          - eth_getLogs
-          - eth_getBlockByHash
-          - eth_getBlockReceipts
-          - eth_getBlockByNumber
-          - eth_getTransactionByHash
-          - eth_getTransactionReceipt
-
-      - id: egc-base
-        vendorName: erpc-edge-cache
-        endpoint: grpc://egc-base.pubgcs.us-west-2.aws.erpc.cloud:443?secret=${ERPC_SECRET}
-        evm:
-          chainId: 8453
-          statePollerDebounce: 500ms
-          statePollerInterval: 2s
-          maxAvailableRecentBlocks: 2000
-        ignoreMethods:
-          - "*"
-        allowMethods:
-          - eth_getLogs
-          - eth_getBlockByHash
-          - eth_getBlockReceipts
-          - eth_getBlockByNumber
-          - eth_getTransactionByHash
-          - eth_getTransactionReceipt
+        endpoint: https://edge.goldsky.com/standard/evm/8453?token=${ERPC_SECRET}
 
       - id: alchemy-chain-8453
         type: evm
