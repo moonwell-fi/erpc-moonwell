@@ -153,6 +153,13 @@ projects:
         rateLimitBudget: global-erpc
         evm:
           chainId: 1284
+      
+      - id: erpc-chain-1285
+        type: evm
+        endpoint: https://edge.goldsky.com/standard/evm/1285?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
+        evm:
+          chainId: 1285
 
       - id: erpc-chain-1
         type: evm
