@@ -119,80 +119,66 @@ projects:
         evm:
           chainId: 8453
 
-      - id: blastapi-chain-8453
+      - id: erpc-chain-8453
         type: evm
-        endpoint: https://base-mainnet.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/8453?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 8453
 
-      - id: blastapi-chain-84532
+      - id: erpc-chain-84532
         type: evm
-        endpoint: https://base-sepolia.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/84532?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 84532
 
-      - id: blastapi-chain-10
+      - id: erpc-chain-10
         type: evm
-        endpoint: https://optimism-mainnet.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/10?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 10
 
-      - id: blastapi-chain-11155420
+      - id: erpc-chain-11155420
         type: evm
-        endpoint: https://optimism-sepolia.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/11155420?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 11155420
 
-      - id: blastapi-chain-1284
+      - id: erpc-chain-1284
         type: evm
-        endpoint: https://moonbeam.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/1284?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 1284
 
-      # - id: blastapi-chain-1285
-      #   type: evm
-      #   endpoint: https://moonriver.blastapi.io/${BLASTAPI_KEY}
-      #   rateLimitBudget: global-blast
-      #   evm:
-      #     chainId: 1285
-
-      # - id: blastapi-chain-1287
-      #   type: evm
-      #   endpoint: https://moonbase-alpha.blastapi.io/${BLASTAPI_KEY}
-      #   rateLimitBudget: global-blast
-      #   evm:
-      #     chainId: 1287
-
-      - id: blastapi-chain-1
+      - id: erpc-chain-1
         type: evm
-        endpoint: https://eth-mainnet.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/1?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 1
 
-      - id: blastapi-chain-43114
+      - id: erpc-chain-43114
         type: evm
-        endpoint: https://ava-mainnet.blastapi.io/${BLASTAPI_KEY}/ext/bc/C/rpc
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/43114?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 43114
 
-      - id: blastapi-chain-137
+      - id: erpc-chain-137
         type: evm
-        endpoint: https://polygon-mainnet.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/137?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 137
 
-      - id: blastapi-chain-42161
+      - id: erpc-chain-42161
         type: evm
-        endpoint: https://arbitrum-one.blastapi.io/${BLASTAPI_KEY}
-        rateLimitBudget: global-blast
+        endpoint: https://edge.goldsky.com/standard/evm/42161?token=${ERPC_SECRET}
+        rateLimitBudget: global-erpc
         evm:
           chainId: 42161
 
@@ -206,15 +192,15 @@ rateLimiters:
     - id: global-cdp
       rules:
         - method: '*'
-          maxCount: 5000
+          maxCount: 10000
           period: 1s
-    - id: global-blast
+    - id: global-erpc
       rules:
         - method: '*'
-          maxCount: 5000
+          maxCount: 10000
           period: 1s
     - id: global-alchemy
       rules:
         - method: '*'
-          maxCount: 5000
+          maxCount: 10000
           period: 1s
