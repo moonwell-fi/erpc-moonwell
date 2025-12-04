@@ -102,9 +102,6 @@ projects:
     #       secret: {ERPC_SECRET}
 
     upstreams:
-      - id: erpc-edge
-        endpoint: https://edge.goldsky.com/standard/evm/8453?token=${ERPC_SECRET}
-
       - id: alchemy-chain-8453
         type: evm
         endpoint: https://base-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
@@ -123,6 +120,9 @@ projects:
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/8453?token=${ERPC_SECRET}
         rateLimitBudget: global-erpc
+        routing:
+          scoreMultipliers:
+            - overall: 3
         evm:
           chainId: 8453
 
