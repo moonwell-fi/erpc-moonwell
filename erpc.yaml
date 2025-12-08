@@ -95,34 +95,11 @@ projects:
             errorRate: 2
             blockHeadLag: 8
 
-    # providers:
-    #   - vendor: erpc
-    #     settings:
-    #       endpoint: c9856.pubgw0.us-west-2.aws.erpc.cloud/main/evm
-    #       secret: {ERPC_SECRET}
-
     upstreams:
-      - id: alchemy-chain-8453
-        type: evm
-        endpoint: https://base-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
-        rateLimitBudget: global-alchemy
-        evm:
-          chainId: 8453
-
-      - id: cdp-chain-8453
-        type: evm
-        endpoint: ${CDP_BASE_RPC_URL}
-        rateLimitBudget: global-cdp
-        evm:
-          chainId: 8453
-
       - id: erpc-chain-8453
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/8453?token=${ERPC_SECRET}
         rateLimitBudget: global-erpc
-        routing:
-          scoreMultipliers:
-            - overall: 3
         evm:
           chainId: 8453
 
@@ -198,22 +175,7 @@ projects:
 
 rateLimiters:
   budgets:
-    - id: default-budget
-      rules:
-        - method: '*'
-          maxCount: 10000
-          period: 1s
-    - id: global-cdp
-      rules:
-        - method: '*'
-          maxCount: 10000
-          period: 1s
     - id: global-erpc
-      rules:
-        - method: '*'
-          maxCount: 10000
-          period: 1s
-    - id: global-alchemy
       rules:
         - method: '*'
           maxCount: 10000
