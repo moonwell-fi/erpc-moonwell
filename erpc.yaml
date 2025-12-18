@@ -82,7 +82,7 @@ projects:
           emptyResultConfidence: blockHead
           emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
       rateLimitAutoTune:
-        enabled: true
+        enabled: false
         adjustmentPeriod: 30s
         errorRateThreshold: 0.1
         increaseFactor: 1.1
