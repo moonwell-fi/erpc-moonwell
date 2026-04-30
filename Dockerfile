@@ -1,4 +1,4 @@
-FROM ghcr.io/erpc/erpc:7075d5c
+FROM ghcr.io/erpc/erpc:main@sha256:883f39ec01607351ee2969a82fe93c62f98aa0db6c8d80e691f33180e539a484
 
 COPY erpc.yaml .
 
