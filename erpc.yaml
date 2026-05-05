@@ -50,7 +50,7 @@ projects:
       failsafe:
         timeout:
           quantile: 0.99
-          minDuration: 1s
+          minDuration: 10s
           maxDuration: 300s
           duration: 300s
         hedge:
@@ -78,7 +78,7 @@ projects:
       failsafe:
         timeout:
           quantile: 0.85
-          minDuration: 500ms
+          minDuration: 5s
           maxDuration: 300s
           duration: 300s
         hedge: null
