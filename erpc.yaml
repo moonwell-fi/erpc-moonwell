@@ -98,35 +98,35 @@ projects:
     upstreams:
       - id: erpc-chain-8453
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/8453?token=${ERPC_SECRET}
+        endpoint: https://base-mainnet.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 8453
 
       - id: erpc-chain-84532
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/84532?token=${ERPC_SECRET}
+        endpoint: https://base-sepolia.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 84532
 
       - id: erpc-chain-10
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/10?token=${ERPC_SECRET}
+        endpoint: https://opt-mainnet.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 10
 
       - id: erpc-chain-11155420
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/11155420?token=${ERPC_SECRET}
+        endpoint: https://moonbeam-mainnet.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 11155420
 
       - id: erpc-chain-1284
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/1284?token=${ERPC_SECRET}
+        endpoint: https://moonbeam-mainnet.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 1284
@@ -147,28 +147,28 @@ projects:
 
       - id: erpc-chain-1
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/1?token=${ERPC_SECRET}
+        endpoint: https://eth-mainnet.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 1
 
       - id: erpc-chain-43114
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/43114?token=${ERPC_SECRET}
+        endpoint: https://avax-mainnet.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 43114
 
       - id: erpc-chain-137
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/137?token=${ERPC_SECRET}
+        endpoint: https://polygon-mainnet.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 137
 
       - id: erpc-chain-42161
         type: evm
-        endpoint: https://edge.goldsky.com/standard/evm/42161?token=${ERPC_SECRET}
+        endpoint: https://arb-mainnet.g.alchemy.com/v2/6nw4n7dsN20MECOIoosWv
         rateLimitBudget: global-erpc
         evm:
           chainId: 42161
