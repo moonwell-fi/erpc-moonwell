@@ -49,6 +49,9 @@ projects:
         retryEmpty: true
       failsafe:
         timeout:
+          quantile: 0.99
+          minDuration: 10s
+          maxDuration: 300s
           duration: 300s
         hedge:
           quantile: 0.95
@@ -74,10 +77,13 @@ projects:
         getLogsSplitOnError: false
       failsafe:
         timeout:
+          quantile: 0.85
+          minDuration: 5s
+          maxDuration: 300s
           duration: 300s
         hedge: null
         retry:
-          maxAttempts: 2
+          maxAttempts: 1
           delay: 0ms
           emptyResultConfidence: blockHead
           emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
@@ -99,77 +105,77 @@ projects:
       - id: erpc-chain-8453
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/8453?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 8453
 
       - id: erpc-chain-84532
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/84532?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 84532
 
       - id: erpc-chain-10
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/10?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 10
 
       - id: erpc-chain-11155420
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/11155420?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 11155420
 
       - id: erpc-chain-1284
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/1284?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 1284
 
       - id: erpc-chain-1287
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/1287?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 1287
       
       - id: erpc-chain-1285
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/1285?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 1285
 
       - id: erpc-chain-1
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/1?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 1
 
       - id: erpc-chain-43114
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/43114?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 43114
 
       - id: erpc-chain-137
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/137?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 137
 
       - id: erpc-chain-42161
         type: evm
         endpoint: https://edge.goldsky.com/standard/evm/42161?token=${ERPC_SECRET}
-        rateLimitBudget: global-erpc
+        # rateLimitBudget: global-erpc
         evm:
           chainId: 42161
 
