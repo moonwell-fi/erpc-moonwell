@@ -66,10 +66,16 @@ projects:
         integrity:
           enforceHighestBlock: true
           enforceGetLogsBlockRange: true
-      # Goldsky edge is primary on every network. Alchemy upstreams are tagged
-      # tier:fallback and only enter rotation when the Goldsky upstream for that
-      # network is down (high error/throttle rate) or lagging (block-head lag),
-      # then traffic returns to Goldsky once it recovers (probeExcluded + stickyPrimary).
+      # Goldsky edge is primary on every network. Alchemy (tier:fallback) is only
+      # selected in serious conditions: when Goldsky falls >= 60s behind the chain
+      # tip, or is cordoned by the circuit breaker (hard down -> blocks stop
+      # advancing -> lag climbs). blockSecondsLag is chain-uniform, so "1 minute
+      # behind" means the same on every chain regardless of block time.
+      #
+      # No probeExcluded on purpose: it would shadow-mirror ~10% of traffic to the
+      # excluded Alchemy upstream during normal operation. Lag is tracked by the
+      # state poller independent of routing, so Goldsky is re-selected automatically
+      # once it catches up -- no probe traffic to Alchemy is needed for recovery.
       selectionPolicy:
         evalInterval: 10s
         evalTimeout: 1s
@@ -78,14 +84,11 @@ projects:
           (upstreams, ctx) =>
             upstreams
               .removeCordoned()
-              .excludeIf(all(samplesAbove(10), errorRateAbove(0.7)))
-              .excludeIf(all(samplesAbove(10), throttleRateAbove(0.4)))
-              .excludeIf(any(blockNumberLagAbove(16), blockSecondsLagAbove(30)))
+              .excludeIf(blockSecondsLagAbove(60))
               .whenEmpty(() => upstreams)
               .preferTag('!tier:fallback', { minHealthy: 1, fallback: 'tier:fallback' })
               .sortByScore(PREFER_FASTEST)
-              .stickyPrimary({ hysteresis: 0.30, minSwitchInterval: '30s' })
-              .probeExcluded({ sampleRate: 0.1, minSamples: 10, minSamplesWindow: '60s', maxConcurrent: 4, timeout: '10s' })
+              .stickyPrimary({ hysteresis: 0.30, minSwitchInterval: '60s' })
 
     upstreamDefaults:
       autoIgnoreUnsupportedMethods: false
