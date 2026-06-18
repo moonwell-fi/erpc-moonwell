@@ -92,8 +92,6 @@ projects:
               .excludeIf(blockSecondsLagAbove(60))
               .whenEmpty(() => upstreams)
               .preferTag('!tier:fallback', { minHealthy: 1, fallback: 'tier:fallback' })
-              .sortByScore(PREFER_FASTEST)
-              .stickyPrimary({ hysteresis: 0.30, minSwitchInterval: '60s' })
 
     upstreamDefaults:
       autoIgnoreUnsupportedMethods: false
