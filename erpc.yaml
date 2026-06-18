@@ -61,7 +61,6 @@ projects:
         retry:
           maxAttempts: 6
           delay: 0ms
-          emptyResultConfidence: blockHead
           emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
       evm:
         integrity:
@@ -105,7 +104,6 @@ projects:
         retry:
           maxAttempts: 1
           delay: 0ms
-          emptyResultConfidence: blockHead
           emptyResultIgnore: [ "eth_getLogs", "eth_call" ]
       rateLimitAutoTune:
         enabled: false
