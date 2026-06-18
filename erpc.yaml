@@ -67,6 +67,26 @@ projects:
         integrity:
           enforceHighestBlock: true
           enforceGetLogsBlockRange: true
+      # Goldsky edge is primary on every network. Alchemy upstreams are tagged
+      # tier:fallback and only enter rotation when the Goldsky upstream for that
+      # network is down (high error/throttle rate) or lagging (block-head lag),
+      # then traffic returns to Goldsky once it recovers (probeExcluded + stickyPrimary).
+      selectionPolicy:
+        evalInterval: 10s
+        evalTimeout: 1s
+        evalScope: network
+        evalFunc: |
+          (upstreams, ctx) =>
+            upstreams
+              .removeCordoned()
+              .excludeIf(all(samplesAbove(10), errorRateAbove(0.7)))
+              .excludeIf(all(samplesAbove(10), throttleRateAbove(0.4)))
+              .excludeIf(any(blockNumberLagAbove(16), blockSecondsLagAbove(30)))
+              .whenEmpty(() => upstreams)
+              .preferTag('!tier:fallback', { minHealthy: 1, fallback: 'tier:fallback' })
+              .sortByScore(PREFER_FASTEST)
+              .stickyPrimary({ hysteresis: 0.30, minSwitchInterval: '30s' })
+              .probeExcluded({ sampleRate: 0.1, minSamples: 10, minSamplesWindow: '60s', maxConcurrent: 4, timeout: '10s' })
 
     upstreamDefaults:
       autoIgnoreUnsupportedMethods: false
@@ -179,9 +199,89 @@ projects:
         evm:
           chainId: 42161
 
+      # Alchemy fallback upstreams. tier:fallback keeps them out of rotation
+      # until the selectionPolicy finds the primary (Goldsky) unhealthy/lagging.
+      # Only the chains Alchemy supports are listed (no Moonbeam/Moonriver/Moonbase).
+      - id: alchemy-chain-8453
+        type: evm
+        endpoint: https://base-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 8453
+
+      - id: alchemy-chain-84532
+        type: evm
+        endpoint: https://base-sepolia.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 84532
+
+      - id: alchemy-chain-10
+        type: evm
+        endpoint: https://opt-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 10
+
+      - id: alchemy-chain-11155420
+        type: evm
+        endpoint: https://opt-sepolia.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 11155420
+
+      - id: alchemy-chain-1
+        type: evm
+        endpoint: https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 1
+
+      - id: alchemy-chain-43114
+        type: evm
+        endpoint: https://avax-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 43114
+
+      - id: alchemy-chain-137
+        type: evm
+        endpoint: https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 137
+
+      - id: alchemy-chain-42161
+        type: evm
+        endpoint: https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 42161
+
 rateLimiters:
   budgets:
     - id: global-erpc
+      rules:
+        - method: '*'
+          maxCount: 10000
+          period: 1s
+    - id: global-alchemy
       rules:
         - method: '*'
           maxCount: 10000
