@@ -182,6 +182,20 @@ projects:
         evm:
           chainId: 42161
 
+      - id: erpc-chain-4217
+        type: evm
+        endpoint: https://edge.goldsky.com/standard/evm/4217?token=${ERPC_SECRET}
+        # rateLimitBudget: global-erpc
+        evm:
+          chainId: 4217
+
+      - id: erpc-chain-42431
+        type: evm
+        endpoint: https://edge.goldsky.com/standard/evm/42431?token=${ERPC_SECRET}
+        # rateLimitBudget: global-erpc
+        evm:
+          chainId: 42431
+
       # Alchemy fallback upstreams. tier:fallback keeps them out of rotation
       # until the selectionPolicy finds the primary (Goldsky) unhealthy/lagging.
       # Every network above has an Alchemy counterpart here.
@@ -256,6 +270,24 @@ projects:
           - tier:fallback
         evm:
           chainId: 42161
+
+      - id: alchemy-chain-4217
+        type: evm
+        endpoint: https://tempo-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 4217
+
+      - id: alchemy-chain-42431
+        type: evm
+        endpoint: https://tempo-moderato.g.alchemy.com/v2/${ALCHEMY_KEY}
+        # rateLimitBudget: global-alchemy
+        tags:
+          - tier:fallback
+        evm:
+          chainId: 42431
 
 rateLimiters:
   budgets:
